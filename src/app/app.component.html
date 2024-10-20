@@ -1,0 +1,22 @@
+<div>
+  <h1>Train Seat Booking System</h1>
+
+  <!-- Input field for entering the number of seats to book -->
+  <label for="seats">Enter number of seats to book (1-7): </label>
+  <input id="seats" [(ngModel)]="seatsToBook" type="number" min="1" max="7" />
+  <button (click)="bookSeats()">Book Seats</button>
+
+  <!-- Display error message if any -->
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <!-- Display seat layout -->
+  <div class="seat-layout">
+    <div *ngFor="let row of seatLayout; let i = index">
+      <div *ngFor="let seat of row; let j = index"
+           [class.booked]="seat"
+           class="seat">
+        {{ (i * 7) + j + 1 }}
+      </div>
+    </div>
+  </div>
+</div>
